@@ -1,0 +1,16 @@
+hash: 4072f4bec953762d5df779132acb7e8d9171e3d5319bbe0b8d939bc6a1150908
+updated: 2016-06-02T21:16:42.359347326+01:00
+imports:
+- name: github.com/imdario/mergo
+  version: 50d4dbd4eb0e84778abe37cefef140271d96fade
+- name: github.com/jessevdk/go-flags
+  version: b9b882a3990882b05e02765f5df2cd3ad02874ee
+- name: github.com/op/go-logging
+  version: 970db520ece77730c7e4724c61121037378659d9
+- name: github.com/stretchr/testify
+  version: 8d64eb7173c7753d6419fd4a9caf057398611364
+  subpackages:
+  - assert
+- name: gopkg.in/yaml.v2
+  version: a83829b6f1293c91addabc89d0571c246397bbf4
+devImports: []

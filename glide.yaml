@@ -1,0 +1,9 @@
+package: github.com/stepanstipl/confpress
+import:
+- package: github.com/imdario/mergo
+- package: github.com/jessevdk/go-flags
+- package: github.com/op/go-logging
+- package: gopkg.in/yaml.v2
+- package: github.com/stretchr/testify
+  subpackages:
+  - assert
