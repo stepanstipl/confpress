@@ -9,13 +9,24 @@ build:
           mkdir -p "${GOPATH}/src/github.com/stepanstipl" && \
           ln -s "${WERCKER_SOURCE_DIR}" "${GOPATH}/src/${PACKAGE}"
     - script:
+        name: install glide
+        code: |
+          wget -O- https://github.com/Masterminds/glide/releases/download/0.10.2/glide-0.10.2-linux-amd64.tar.gz | tar -xvzO linux-amd64/glide > /usr/local/bin/glide && \
+          chmod +x /usr/local/bin/glide
+    - script:
+        name: install dependencies
+        code: glide install
+        cwd: "${GOPATH}/src/${PACKAGE}"
+    - script:
         name: go build
         code: |
           CGO_ENABLED=0 go build -a -ldflags '-s' -v $PACKAGE
+        cwd: "${GOPATH}/src/${PACKAGE}"
     - script:
         name: go test
         code: |
           go test
+        cwd: "${GOPATH}/src/${PACKAGE}"
     - script:
         name: create greenpeace binary archive
         code: |
@@ -42,5 +53,5 @@ push-github:
         tag: $MY_RELEASE_TAG
     - github-upload-asset:
         token: $GITHUB_TOKEN
-        file: greenpeace.tar.gz
+        file: confpress-linux-amd64.tar.gz
         content_type: application/x-gzip
