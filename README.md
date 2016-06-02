@@ -1,4 +1,7 @@
-*Confpress* is simple configuration templating tool to ease your life!
+[![wercker status](https://app.wercker.com/status/cf9e7754fd7c23ab91908d5b5299ea09/s/master "wercker status")](https://app.wercker.com/project/bykey/cf9e7754fd7c23ab91908d5b5299ea09)
+
+
+**Confpress** is simple configuration templating tool to ease your life!
 
 Given set of input files (either json or yaml) it will merge these and also merge any env variables matching given prefix and process template file with go templating engine.
 
