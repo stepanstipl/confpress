@@ -1,3 +1,4 @@
 _*
 confpress
 vendor/*
+local.env
