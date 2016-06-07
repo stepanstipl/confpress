@@ -20,3 +20,9 @@ Application Options:
 Help Options:
   -h, --help        Show this help message
 ```
+
+### Examples
+
+- **Reading a variable from yaml/json as shell env variable:**
+  
+  `MY_VAR=$(echo "{{ .my_variable}}" | confpress -i variables.yaml)`
