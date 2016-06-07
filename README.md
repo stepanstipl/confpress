@@ -25,4 +25,4 @@ Help Options:
 
 - **Reading a variable from yaml/json as shell env variable:**
   
-  `MY_VAR=$(echo "{{ .my_variable}}" | confpress -i variables.yaml)`
+  `MY_VAR=$(echo "{{ .my_variable }}" | confpress -i variables.yaml)`
