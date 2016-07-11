@@ -28,7 +28,7 @@ build:
           go test
         cwd: "${GOPATH}/src/${PACKAGE}"
     - script:
-        name: create greenpeace binary archive
+        name: create confpress binary archive
         code: |
           tar zcvf "${WERCKER_OUTPUT_DIR}/confpress.tar.gz" confpress
     - script:

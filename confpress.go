@@ -80,7 +80,7 @@ func main() {
 	temp, err := loadTemplate(opts.TemplatePath)
 
 	if err != nil {
-		panic(err)
+    log.Errorf(err.Error())
     os.Exit(1)
 	}
 
@@ -90,7 +90,8 @@ func main() {
   log.Infof("Opening output file: '%s'", opts.OutputPath)
 	outFile, err := createStream(opts.OutputPath)
 	if err != nil {
-		panic(err)
+    log.Errorf(err.Error())
+    os.Exit(1)
 	}
 	defer closeStream(outFile)
 
@@ -103,7 +104,8 @@ func main() {
   }
   err = temp.Execute(outFile, config)
 	if err != nil {
-		panic(err)
+    log.Errorf(err.Error())
+    os.Exit(1)
 	}
 
   log.Infof("All done")
@@ -133,7 +135,7 @@ func getAllEnvVariables(prefix string) (ret map[string]interface{}, err error) {
   for _, e := range os.Environ() {
     if strings.HasPrefix(e, prefix) {
       eName := strings.Split(strings.TrimPrefix(e, prefix), "=")[0]
-      eValue := strings.Split(strings.TrimPrefix(e, prefix), "=")[1]
+      eValue := strings.SplitN(strings.TrimPrefix(e, prefix), "=", 2)[1]
       ret[eName] = eValue
     }
   }
