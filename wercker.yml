@@ -30,7 +30,7 @@ build:
     - script:
         name: create confpress binary archive
         code: |
-          tar zcvf "${WERCKER_OUTPUT_DIR}/confpress.tar.gz" confpress
+          tar zcvf "${WERCKER_OUTPUT_DIR}/confpress-linux-amd64.tar.gz" confpress
     - script:
         name: output release tag
         code: |
