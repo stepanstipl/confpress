@@ -10,12 +10,13 @@ Usage:
   confpress [OPTIONS]
 
 Application Options:
-  -v, --version     Show version
   -d, --debug       Log debug messages
-  -t, --template=   Input template file (- for stdin) (default: -)
-  -o, --output=     Output file (- for stdout) (default: -)
-  -i, --input=      Input variable file(s)
   -e, --env_prefix= Environment variables prefix (default: CONF_)
+  -i, --input=      Input variable file(s)
+  -m, --missing     Allow missing keys
+  -o, --output=     Output file (- for stdout) (default: -)
+  -t, --template=   Input template file (- for stdin) (default: -)
+  -v, --version     Show version
 
 Help Options:
   -h, --help        Show this help message
@@ -24,5 +25,5 @@ Help Options:
 ### Examples
 
 - **Reading a variable from yaml/json as shell env variable:**
-  
+
   `MY_VAR=$(echo "{{ .my_variable }}" | confpress -i variables.yaml)`

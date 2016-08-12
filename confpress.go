@@ -13,17 +13,16 @@ import (
 )
 
 type Options struct {
-  Version bool `short:"v" long:"version" description:"Show version"`
   Debug bool `short:"d" long:"debug" description:"Log debug messages"`
-  TemplatePath string `short:"t" long:"template" description:"Input template file (- for stdin)" default:"-"`
-  OutputPath string `short:"o" long:"output" description:"Output file (- for stdout)" default:"-"`
-
-  InputPaths []string `short:"i" long:"input" description:"Input variable file(s)"`
-
   EnvPrefix string `short:"e" long:"env_prefix" description:"Environment variables prefix" default:"CONF_"`
+  InputPaths []string `short:"i" long:"input" description:"Input variable file(s)"`
+  Missing bool `short:"m" long:"missing" description:"Allow missing keys"`
+  OutputPath string `short:"o" long:"output" description:"Output file (- for stdout)" default:"-"`
+  TemplatePath string `short:"t" long:"template" description:"Input template file (- for stdin)" default:"-"`
+  Version bool `short:"v" long:"version" description:"Show version"`
 }
 
-const version=`0.0.1`
+const version=`0.1.0`
 var opts Options
 var parser = flags.NewParser(&opts, flags.Default)
 var log = logging.MustGetLogger("default")
@@ -84,8 +83,10 @@ func main() {
     os.Exit(1)
 	}
 
-  // err on missing keys
-  temp.Option("missingkey=error")
+  if ! opts.Missing {
+    // err on missing keys
+    temp.Option("missingkey=error")
+  }
 
   log.Infof("Opening output file: '%s'", opts.OutputPath)
 	outFile, err := createStream(opts.OutputPath)
