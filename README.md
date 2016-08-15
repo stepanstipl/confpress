@@ -23,7 +23,9 @@ Help Options:
 ```
 
 ### Examples
+- **To allow empty variable**
+  Use `-m` switch to allow empty values (else confpress throws an error). Golang templates will render it as `<no value>`. To keep the output really empty use construct `{{ or .my_value "" }}` in your template.
 
-- **Reading a variable from yaml/json as shell env variable:**
+- **Reading a variable from yaml/json as shell env variable**
 
   `MY_VAR=$(echo "{{ .my_variable }}" | confpress -i variables.yaml)`
